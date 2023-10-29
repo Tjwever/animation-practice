@@ -5,7 +5,7 @@ export const itemRootContainer = {
         y: 0,
         transition: {
             staggerChildren: 0.1,
-            delayChildren: 0.3,
+            delayChildren: 0.2,
         },
     },
     navigating: { opacity: 0, y: -140, scale: 0 },

@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client'
 import Root from './routes/root'
 import ErrorPage from './error-page'
 import Details from './routes/details'
-import { motion, AnimatePresence } from 'framer-motion'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 
