@@ -6,6 +6,7 @@ import {
     itemDetailsContainer,
     itemDetailsVariants,
 } from '../utils/animation-variants'
+import Modal from '../components/Modal'
 
 interface Card {
     id: number
@@ -21,6 +22,7 @@ export default function Details() {
     const url = 'https://jsonplaceholder.typicode.com/users'
     const [user, setUser] = useState<Card | null>(null)
     const [isVisable, setIsVisable] = useState(true)
+    const [isOpen, setIsOpen] = useState(false)
 
     const { userId } = useParams()
     const navigate = useNavigate()
@@ -54,7 +56,8 @@ export default function Details() {
     }
 
     return (
-        <AnimatePresence>
+        // <AnimatePresence>
+        <>
             <motion.div
                 initial={'hidden'}
                 animate={isVisable ? 'show' : 'navigating'}
@@ -72,7 +75,10 @@ export default function Details() {
                     <hr />
                     <p className='username'>{user?.phone}</p>
                     <p className='email'>{user?.email}</p>
-                    <motion.button whileTap={{ scale: 0.9 }}>
+                    <motion.button
+                        onClick={() => setIsOpen(true)}
+                        whileTap={{ scale: 0.9 }}
+                    >
                         Contact Today!
                     </motion.button>
                 </motion.div>
@@ -86,6 +92,9 @@ export default function Details() {
                     Go back
                 </motion.button>
             </motion.div>
-        </AnimatePresence>
+
+            <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
+        </>
+        // </AnimatePresence>
     )
 }
